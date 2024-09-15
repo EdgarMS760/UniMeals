@@ -29,9 +29,8 @@ export default function Router() {
         <Route path='EditProfile' element={<EditForm />} />
       </Route>
       <Route path="register" element={<FormRegister />} />
-      <Route path="chat" element={<ChatInit />}>
-      <Route path='room' element={<ChatRoom />} />
-      </Route>
+      <Route path="chat" element={<ChatInit />}/>
+      <Route path='room' element={<ChatRoom />}/>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
