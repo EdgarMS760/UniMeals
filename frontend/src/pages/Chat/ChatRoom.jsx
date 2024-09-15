@@ -23,10 +23,10 @@ const ChatRoom = () => {
 
     return (
         <div className="flex flex-col h-screen">
-            <TopNavbar logo={logo}>
+            <TopNavbar logo={logo} >
                 {/* Puedes pasar más props o contenido al TopNavbar aquí */}
             </TopNavbar>
-            <div className="flex-grow flex flex-col p-4 bg-white">
+            <div className="flex-grow flex flex-col p-4 mt-16 bg-white">
                 <Header
                     title="Pizza Dog"
                     location="FCFM"

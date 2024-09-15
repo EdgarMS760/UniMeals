@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TopNavbar from '../../components/TopNavBar';
 import logo from '../../assets/img/logoUniEatsNoLetras.png';
 import BottomNavbar from '../../components/BottomNavBar';
-import Card from './Card';
+import Card from '../../pages/Chat/Card';
 
 const Section = ({ title, children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const ChatInit = () => {
             <TopNavbar logo={logo}>
                 {/* Puedes pasar más props o contenido al TopNavbar aquí */}
             </TopNavbar>
-            <div className="mx-auto p-4 bg-white">
+            <div className="mx-auto p-4 bg-white mt-16 mb-16">
                 <div className="flex justify-center items-center mb-4">
                     <h1 className="text-4xl font-semibold">CHAT</h1>
                 </div>
