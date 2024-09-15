@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { ProductCard } from '../components/ProductCard';
-import { ProductEditModal } from '../components/ProductEditModal';
+import { FilterDropdown } from '../components/FilterDropdown';
+import { SortDropdown } from '../components/SortDropdown';
+import { ProductViewModal } from '../components/ProductViewModal';
 
-export const ListProducts = ({}) => {
+export const ListProducts = () => {
     const products = [
         {
             id: 1,
@@ -14,8 +16,8 @@ export const ListProducts = ({}) => {
             price: 29,
             startTime: '09:15', // Hora de inicio en formato HH:mm
             endTime: '12:30'    // Hora de fin en formato HH:mm
-          },
-          {
+        },
+        {
             id: 2,
             image: 'https://via.placeholder.com/150',
             title: 'Product 2',
@@ -23,10 +25,10 @@ export const ListProducts = ({}) => {
             rating: 4.0,
             description: 'Product 2 is an excellent choice for those looking for quality and affordability. It comes with various features and options.',
             price: 39,
-            startTime: '10:00', 
-            endTime: '18:00'    
-          },
-          {
+            startTime: '10:00',
+            endTime: '18:00'
+        },
+        {
             id: 3,
             image: 'https://via.placeholder.com/150',
             title: 'Product 3',
@@ -34,10 +36,10 @@ export const ListProducts = ({}) => {
             rating: 4.7,
             description: 'An outstanding product with great reviews. Product 3 offers exceptional value and is highly recommended by users.',
             price: 49,
-            startTime: '08:30', 
-            endTime: '20:00'    
-          },
-          {
+            startTime: '08:30',
+            endTime: '20:00'
+        },
+        {
             id: 4,
             image: 'https://via.placeholder.com/150',
             title: 'Product 4',
@@ -45,10 +47,10 @@ export const ListProducts = ({}) => {
             rating: 3.8,
             description: 'Product 4 is a good option if you are looking for a budget-friendly choice. It provides essential features and functionalities.',
             price: 19,
-            startTime: '11:45', 
-            endTime: '15:30'    
-          },
-          {
+            startTime: '11:45',
+            endTime: '15:30'
+        },
+        {
             id: 5,
             image: 'https://via.placeholder.com/150',
             title: 'Product 5',
@@ -56,40 +58,74 @@ export const ListProducts = ({}) => {
             rating: 4.2,
             description: 'A versatile product suitable for various uses. Product 5 is known for its durability and high performance.',
             price: 59,
-            startTime: '09:00', 
-            endTime: '17:00'    
-          }
+            startTime: '09:00',
+            endTime: '17:00'
+        }
+    ];
+    const filterOptions = [
+        { label: 'Todos los productos', value: 'all' },
+        { label: 'Electrónicos', value: 'electronics' },
+        { label: 'Ropa', value: 'clothing' },
+        { label: 'Hogar', value: 'home' }
     ];
     const [selectedProduct, setSelectedProduct] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedFilter, setSelectedFilter] = useState(null);
+    const [selectedSort, setSelectedSort] = useState(null);
 
-  const handleEditClick = (product) => {
-    setSelectedProduct(product);
-    setModalVisible(true);
-  };
+    const handleViewClick = (product) => {
+        setSelectedProduct(product);
+        setModalVisible(true);
+    };
 
-  const handleSave = (data) => {
-    // Implement save logic here, e.g., update the product in your state or make an API call
-    console.log('Product data to save:', data);
-  };
-  return (
-    <>
-    <div className="md:flex flex-col items-center p-4 my-20 ">
-    {products.map((product) => (
-        <div key={product.id} onClick={() => handleEditClick(product)}>
-            <ProductCard product={product} />
-          </div>
-        ))}
-</div>
 
-        <ProductEditModal
-        visible={modalVisible}
-        onHide={() => setModalVisible(false)}
-        product={selectedProduct}
-        onSave={handleSave}
-        />
+   
+
+    const handleFilterChange = (filter) => {
+        console.log('Filtro seleccionado:', filter);
+        setSelectedFilter(filter);
+    };
+    const sortOptions = [
+        { label: 'Más reciente', value: 'date_desc' },
+        { label: 'Más antiguo', value: 'date_asc' },
+        { label: 'Precio: de menor a mayor', value: 'price_asc' },
+        { label: 'Precio: de mayor a menor', value: 'price_desc' }
+    ];
+
+    const handleSortChange = (sortOption) => {
+        console.log('Criterio de ordenación seleccionado:', sortOption);
+        setSelectedSort(sortOption);
+    };
+    return (
+        <>
+            <div className="md:flex flex-col items-center p-4 my-20 ">
+                <div className='flex justify-between -z-10'>
+
+                    <FilterDropdown
+                        options={filterOptions}
+                        selectedFilter={selectedFilter}
+                        onFilterChange={handleFilterChange}
+                    />
+                    <SortDropdown
+                        options={sortOptions}
+                        selectedSort={selectedSort}
+                        onSortChange={handleSortChange}
+                    />
+                </div>
+                {products.map((product) => (
+                    <div key={product.id} onClick={() => handleViewClick(product)}>
+                        <ProductCard product={product} />
+                    </div>
+                ))}
+            </div>
+            <ProductViewModal
+                visible={modalVisible}
+                onHide={() => setModalVisible(false)}
+                product={selectedProduct}
+            />
+
 
 
         </>
-  )
+    )
 }

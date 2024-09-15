@@ -27,10 +27,10 @@ export const ProductEditModal = ({ visible, onHide, product, onSave }) => {
     const handleFileSelect = (event) => {
         const file = event.files[0];
         if (file) {
-            
+
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreview(reader.result); 
+                setImagePreview(reader.result);
             };
             reader.readAsDataURL(file);
         }
@@ -56,13 +56,13 @@ export const ProductEditModal = ({ visible, onHide, product, onSave }) => {
             });
             setImagePreview(product.image);
             setTimeS(new Date(`1970-01-01T${product.startTime}:00`)),
-            setTimeE(new Date(`1970-01-01T${product.endTime}:00`))
+                setTimeE(new Date(`1970-01-01T${product.endTime}:00`))
         }
     }, [product, reset]);
 
     const onSubmit = (data) => {
         onSave(data);
-        onHide(); 
+        onHide();
     };
 
     return (
@@ -106,10 +106,10 @@ export const ProductEditModal = ({ visible, onHide, product, onSave }) => {
                     <InputText id="location" {...register('location')} />
                 </div>
                 <div className="field mt-2">
-                <label htmlFor="calendar-timeonly" className="font-bold block mb-2">
-                    Desde las:
-                </label>
-                <Calendar id="calendar-timeonly" value={timeS} onChange={(e) => setTimeS(e.value)} timeOnly />
+                    <label htmlFor="calendar-timeonly" className="font-bold block mb-2">
+                        Desde las:
+                    </label>
+                    <Calendar id="calendar-timeonly" value={timeS} onChange={(e) => setTimeS(e.value)} timeOnly />
                 </div>
                 <div className="field mt-2">
 
@@ -129,7 +129,7 @@ export const ProductEditModal = ({ visible, onHide, product, onSave }) => {
                 </div>
                 <div className="flex justify-end mt-4">
                     <button className='text-white bg-secondary p-2' type="submit">
-Guardar
+                        Guardar
                     </button>
                     <button className="ml-2" onClick={onHide}></button>
                 </div>

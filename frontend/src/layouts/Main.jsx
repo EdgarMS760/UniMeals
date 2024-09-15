@@ -5,6 +5,7 @@ import TopNavbar from '../components/TopNavBar';
 import logo from '../assets/img/logoUniEatsNoLetras.png'
 import { Outlet } from 'react-router-dom';
 import BottomNavbar from '../components/BottomNavBar';
+import { SearchBar } from '../components/SearchBar';
 
 
 export const Main = () => {
@@ -12,7 +13,7 @@ export const Main = () => {
     return (
         <>
             <TopNavbar logo={logo}>
-                <h1 className="text-xl font-semibold">aqui se le pasa lo q quieras</h1>
+                <SearchBar></SearchBar>
             </TopNavbar>
             <Outlet></Outlet>
             <BottomNavbar></BottomNavbar>
