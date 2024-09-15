@@ -6,6 +6,10 @@ import { FormRegister } from '../pages/FormRegister';
 import { NotFound } from '../pages/NotFound';
 import { Main } from '../layouts/Main';
 import { ListProducts } from '../pages/ListProducts';
+import { Profile } from '../layouts/Profile';
+import OwnProfile from '../pages/Profile/OwnProfile';
+import ExternalProfile from '../pages/Profile/ExternalProfile';
+import EditForm from '../pages/Profile/EditForm';
 
 export default function Router() {
   return (
@@ -15,9 +19,14 @@ export default function Router() {
         <Route path="register" element={<FormRegister />} />
       </Route>
       <Route path="/inicio" element={<Main />}>
-        <Route index element={<ListProducts />} /> 
-        {/*<Route path="profile" element={<Profile />} />  */}
+        <Route index element={<ListProducts />} />
       </Route>
+      <Route path="/profile/" element={<Profile />}>
+        <Route path='OwnProfile' element={<OwnProfile />} />
+        <Route path='ExternalProfile' element={<ExternalProfile />} />
+        <Route path='EditProfile' element={<EditForm />} />
+      </Route>
+      <Route path="register" element={<FormRegister />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
