@@ -16,7 +16,7 @@ const TopNavbar = ({ children, logo }) => {
       </div>
 
       <div className="flex items-center">
-        <Link to="/profile">
+        <Link to="/profile/ExternalProfile">
           <i className='pi pi-user' style={{ fontSize: '2rem' }}></i>
         </Link>
       </div>

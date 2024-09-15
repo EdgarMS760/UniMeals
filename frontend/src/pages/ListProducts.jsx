@@ -8,60 +8,116 @@ export const ListProducts = () => {
     const products = [
         {
             id: 1,
-            image: 'https://via.placeholder.com/150',
-            title: 'Product 1',
+            image: 'https://www.themealdb.com/images/media/meals/1529444830.jpg', // Ensalada
+            title: 'Ensalada César',
             location: 'New York',
             rating: 4.5,
-            description: 'This is a brief description of Product 1. It provides a brief overview of the product features and specifications.',
-            price: 29,
-            startTime: '09:15', // Hora de inicio en formato HH:mm
-            endTime: '12:30'    // Hora de fin en formato HH:mm
+            description: 'Una deliciosa ensalada fresca con lechuga, aderezo César, queso parmesano y crutones.',
+            price: 15,
+            startTime: '11:00',
+            endTime: '14:00'
         },
         {
             id: 2,
-            image: 'https://via.placeholder.com/150',
-            title: 'Product 2',
+            image: 'https://www.themealdb.com/images/media/meals/xqyyqu1511644470.jpg', // Pizza
+            title: 'Pizza Margarita',
             location: 'Los Angeles',
-            rating: 4.0,
-            description: 'Product 2 is an excellent choice for those looking for quality and affordability. It comes with various features and options.',
-            price: 39,
+            rating: 4.8,
+            description: 'Pizza italiana tradicional con una base de salsa de tomate, mozzarella fresca y albahaca.',
+            price: 25,
+            startTime: '12:00',
+            endTime: '22:00'
+        },
+        {
+            id: 3,
+            image: 'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg', // Hamburguesa
+            title: 'Hamburguesa Clásica',
+            location: 'Chicago',
+            rating: 4.6,
+            description: 'Hamburguesa jugosa con carne de res, queso cheddar, lechuga, tomate y cebolla caramelizada.',
+            price: 18,
+            startTime: '11:30',
+            endTime: '21:00'
+        },
+        {
+            id: 4,
+            image: 'https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg', // Sushi
+            title: 'Sushi de Salmón',
+            location: 'Houston',
+            rating: 4.9,
+            description: 'Sushi de salmón fresco servido con wasabi, jengibre encurtido y salsa de soja.',
+            price: 30,
+            startTime: '12:00',
+            endTime: '20:00'
+        },
+        {
+            id: 5,
+            image: 'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg', // Burrito
+            title: 'Burrito de Pollo',
+            location: 'San Francisco',
+            rating: 4.4,
+            description: 'Tortilla rellena de pollo, arroz, frijoles, queso y guacamole. Una explosión de sabor mexicano.',
+            price: 12,
             startTime: '10:00',
             endTime: '18:00'
         },
         {
-            id: 3,
-            image: 'https://via.placeholder.com/150',
-            title: 'Product 3',
-            location: 'Chicago',
+            id: 6,
+            image: 'https://www.themealdb.com/images/media/meals/1548772327.jpg', // Tacos
+            title: 'Tacos al Pastor',
+            location: 'Dallas',
             rating: 4.7,
-            description: 'An outstanding product with great reviews. Product 3 offers exceptional value and is highly recommended by users.',
-            price: 49,
-            startTime: '08:30',
-            endTime: '20:00'
-        },
-        {
-            id: 4,
-            image: 'https://via.placeholder.com/150',
-            title: 'Product 4',
-            location: 'Houston',
-            rating: 3.8,
-            description: 'Product 4 is a good option if you are looking for a budget-friendly choice. It provides essential features and functionalities.',
-            price: 19,
-            startTime: '11:45',
-            endTime: '15:30'
-        },
-        {
-            id: 5,
-            image: 'https://via.placeholder.com/150',
-            title: 'Product 5',
-            location: 'San Francisco',
-            rating: 4.2,
-            description: 'A versatile product suitable for various uses. Product 5 is known for its durability and high performance.',
-            price: 59,
+            description: 'Deliciosos tacos con carne de cerdo al pastor, piña, cebolla y cilantro, servidos en tortilla de maíz.',
+            price: 10,
             startTime: '09:00',
             endTime: '17:00'
+        },
+        {
+            id: 7,
+            image: 'https://www.themealdb.com/images/media/meals/wqurxy1511453156.jpg', // Paella
+            title: 'Paella Valenciana',
+            location: 'Miami',
+            rating: 4.9,
+            description: 'Auténtica paella valenciana con arroz, mariscos frescos, pollo y verduras.',
+            price: 35,
+            startTime: '12:00',
+            endTime: '19:00'
+        },
+        {
+            id: 8,
+            image: 'https://www.themealdb.com/images/media/meals/ysqupp1511640538.jpg', // Pancakes
+            title: 'Pancakes de Arándanos',
+            location: 'Las Vegas',
+            rating: 4.3,
+            description: 'Suaves y esponjosos pancakes de arándanos servidos con jarabe de maple y mantequilla.',
+            price: 14,
+            startTime: '07:00',
+            endTime: '11:30'
+        },
+        {
+            id: 9,
+            image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg', // Pasta
+            title: 'Pasta Alfredo',
+            location: 'Orlando',
+            rating: 4.8,
+            description: 'Cremosa pasta fettuccine Alfredo con salsa de queso parmesano y pollo a la parrilla.',
+            price: 20,
+            startTime: '11:00',
+            endTime: '21:00'
+        },
+        {
+            id: 10,
+            image: 'https://www.themealdb.com/images/media/meals/wxuvuv1511299147.jpg', // Ramen
+            title: 'Ramen Tradicional',
+            location: 'Seattle',
+            rating: 4.6,
+            description: 'Sopa japonesa de fideos con caldo de cerdo, huevo, algas y vegetales frescos.',
+            price: 22,
+            startTime: '11:00',
+            endTime: '20:00'
         }
     ];
+
     const filterOptions = [
         { label: 'Todos los productos', value: 'all' },
         { label: 'Electrónicos', value: 'electronics' },
@@ -79,7 +135,7 @@ export const ListProducts = () => {
     };
 
 
-   
+
 
     const handleFilterChange = (filter) => {
         console.log('Filtro seleccionado:', filter);
