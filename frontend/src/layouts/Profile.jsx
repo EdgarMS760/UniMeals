@@ -12,7 +12,7 @@ export const Profile = () => {
     return (
         <>
             <TopNavbar logo={logo}>
-                <h1 className="text-xl font-semibold">aqui se le pasa lo q quieras</h1>
+                <h1 className="text-xl font-semibold">Perfil</h1>
             </TopNavbar>
             <Outlet></Outlet>
             <BottomNavbar></BottomNavbar>

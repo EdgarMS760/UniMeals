@@ -35,57 +35,54 @@ const ChatInit = () => {
                 <Section title="Activos">
                     {/* Aquí puedes agregar varios componentes Card dinámicamente */}
                     <Card
-                        title="Pizza Dog"
-                        lastMessage="Último mensaje en el chat."
+                        title="Pizza Margarita"
+                        lastMessage="¿La pizza viene con extra queso sin costo adicional?"
+                        rating={4.5}
+                        timestamp={new Date().toISOString()}
+                    />
+                    <Card
+                        title="Hamburguesa BBQ"
+                        lastMessage="¿Se puede cambiar el tipo de pan por uno integral?"
                         rating={4.2}
                         timestamp={new Date().toISOString()}
                     />
                     <Card
-                        title="Pizza Dog"
-                        lastMessage="Último mensaje en el chat."
-                        rating={4.2}
+                        title="Tacos al Pastor"
+                        lastMessage="¿Los tacos incluyen salsa picante aparte?"
+                        rating={4.7}
                         timestamp={new Date().toISOString()}
                     />
                     <Card
-                        title="Pizza Dog"
-                        lastMessage="Último mensaje en el chat."
-                        rating={4.2}
+                        title="Sushi de Salmón"
+                        lastMessage="¿El sushi viene con alguna guarnición incluida?"
+                        rating={4.3}
                         timestamp={new Date().toISOString()}
                     />
                     <Card
-                        title="Pizza Dog"
-                        lastMessage="Último mensaje en el chat."
-                        rating={4.2}
-                        timestamp={new Date().toISOString()}
-                    />
-                    <Card
-                        title="Pizza Dog"
-                        lastMessage="Último mensaje en el chat."
-                        rating={4.2}
-                        timestamp={new Date().toISOString()}
-                    />
-                    <Card
-                        title="Burger Queen"
-                        lastMessage="Otro mensaje reciente."
-                        rating={3.8}
+                        title="Burrito de Pollo"
+                        lastMessage="¿El burrito tiene opción de agregar aguacate?"
+                        rating={4.0}
                         timestamp={new Date().toISOString()}
                     />
                 </Section>
+
                 <Section title="Inactivos">
                     {/* Aquí puedes agregar varios componentes Card dinámicamente */}
                     <Card
-                        title="Sushi Place"
-                        lastMessage="Último mensaje en el chat."
-                        rating={2.5}
+                        title="Ensalada César"
+                        lastMessage="¿La ensalada viene con aderezo aparte?"
+                        rating={3.8}
                         timestamp={new Date().toISOString()}
                     />
                     <Card
-                        title="Taco Stand"
-                        lastMessage="Mensaje antiguo."
-                        rating={1.9}
+                        title="Hot Dog Clásico"
+                        lastMessage="¿Puedo agregar jalapeños al hot dog?"
+                        rating={3.6}
                         timestamp={new Date().toISOString()}
                     />
                 </Section>
+
+
             </div>
             <BottomNavbar></BottomNavbar>
         </div>
