@@ -10,6 +10,8 @@ import { Profile } from '../layouts/Profile';
 import OwnProfile from '../pages/Profile/OwnProfile';
 import ExternalProfile from '../pages/Profile/ExternalProfile';
 import EditForm from '../pages/Profile/EditForm';
+import ChatInit from '../pages/Chat/ChatInit';
+import ChatRoom from '../pages/Chat/ChatRoom';
 
 export default function Router() {
   return (
@@ -27,6 +29,9 @@ export default function Router() {
         <Route path='EditProfile' element={<EditForm />} />
       </Route>
       <Route path="register" element={<FormRegister />} />
+      <Route path="chat" element={<ChatInit />}>
+      <Route path='room' element={<ChatRoom />} />
+      </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
