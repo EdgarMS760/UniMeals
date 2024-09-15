@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TopNavbar from '../../components/TopNavBar';
 import logo from '../../assets/img/logoUniEatsNoLetras.png';
 import BottomNavbar from '../../components/BottomNavBar';
-import Card from './card';
+import Card from './Card';
 
 const Section = ({ title, children }) => {
     const [isOpen, setIsOpen] = useState(false);
