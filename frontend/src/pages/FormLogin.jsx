@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
+import { postHTTP, urlBase } from "../utils/Services";
+import { AuthContext } from '../Context/AuthContext';
 
 export const FormLogin = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const onSubmit = async (data) => {
 
+    const response = await postHTTP(`${urlBase}/usuarios/logIn`, JSON.stringify({ email: data.email, password: data.password }))
+    if (response.error) {
+      return setErrorMsgLogIn(response)
+    }
+
+    localStorage.setItem("User", JSON.stringify(response.userData))
+  };
+  console.log()
   return (
     <div className="bg-primary flex items-center justify-center rounded-lg ">
       <div className="w-full max-w-sm p-8 rounded-lg ">
@@ -41,13 +49,13 @@ export const FormLogin = () => {
             Continuar
           </button>
         </form>
-      <NavLink
-        to="/register"
-       className=' text-secondary'
-      >
-        <span className=' text-slate-200'> ¿No tienes cuenta?</span>
-        <span className='text-white font-bold'> Registrate</span>
-      </NavLink>
+        <NavLink
+          to="/register"
+          className=' text-secondary'
+        >
+          <span className=' text-slate-200'> ¿No tienes cuenta?</span>
+          <span className='text-white font-bold'> Registrate</span>
+        </NavLink>
       </div>
     </div>
   );
