@@ -4,7 +4,7 @@ const validator = require('validator')
 
 module.exports.create = async (req, res) => {
     try {
-        const { nombre, imageUrl, descripcion, idOwner, categoria, ubicacion } = req.body
+        const { nombre, imageUrl, descripcion, idOwner, categoria, ubicacion, startDate, finishDate } = req.body
         let isValid = true
         let errors = []
 
@@ -32,6 +32,8 @@ module.exports.create = async (req, res) => {
             return res.status(400).send({ errors: errors })
 
         const precio = Number(req.body.precio)
+        const dateString = "2024-09-15T14:00:00Z"; // ISO 8601 format (recommended)
+        const dateStart = new Date(dateString);
 
         const productRef = db.collection('productos').doc()
         await productRef.set({
@@ -42,7 +44,10 @@ module.exports.create = async (req, res) => {
             fecha_subida: admin.firestore.Timestamp.now(),
             precio: precio,
             idOwner: idOwner,
-            nameCategoria: categoria
+            nameCategoria: categoria,
+            startDate: admin.firestore.Timestamp.fromDate(new Date(startDate)),
+            finishDate: admin.firestore.Timestamp.fromDate(new Date(finishDate)),
+            status: "A"
         })
 
         res.status(200).send({ msg: "Se creo un producto correctamente" })
@@ -54,7 +59,7 @@ module.exports.create = async (req, res) => {
 
 module.exports.update = async (req, res) => {
     try {
-        const { nombre, imageUrl, descripcion, categoria, ubicacion, idProducto } = req.body
+        const { nombre, imageUrl, descripcion, categoria, ubicacion, idProducto, status, startDate, finishDate } = req.body
         let isValid = true
         let errors = []
 
@@ -93,7 +98,10 @@ module.exports.update = async (req, res) => {
             ubicación: ubicacion,
             fecha_subida: admin.firestore.Timestamp.now(),
             precio: precio,
-            nameCategoria: categoria
+            nameCategoria: categoria,
+            status: status,
+            startDate: admin.firestore.Timestamp.fromDate(new Date(startDate)),
+            finishDate: admin.firestore.Timestamp.fromDate(new Date(finishDate))
         })
 
         res.status(200).send({ msg: "Se actualizo correctamente" })
@@ -103,9 +111,47 @@ module.exports.update = async (req, res) => {
     }
 }
 
+module.exports.updateStatus = async (req, res) => {
+    try {
+        const { status, idProducto } = req.body
+
+        const productRef = await db.collection('productos').doc(idProducto).get()
+
+
+        await productRef.ref.update({
+            status: status
+        })
+
+        res.status(200).send({ msg: "Se actualizo correctamente" })
+    } catch (error) {
+        res.status(400).send({ msg: error })
+        console.log(error)
+    }
+}
+
+module.exports.findProduct = async (req, res) => {
+    try {
+        const idProducto = req.query.idProducto
+        const productosRef = await db.collection('productos').doc(idProducto).get();
+        return res.status(200).send({ producto: productosRef })
+    } catch (error) {
+        res.status(400).send({ msg: error })
+    }
+}
+
 module.exports.findProducts = async (req, res) => {
     try {
         const productosRef = await db.collection('productos').get();
+        return res.status(200).send({ productos: productosRef.data() })
+    } catch (error) {
+        res.status(400).send({ msg: error })
+    }
+}
+
+module.exports.findProductsUser = async (req, res) => {
+    try {
+        const idUser = req.query.idUser
+        const productosRef = await db.collection('productos').where("idOwner", "==", idUser).get();
         return res.status(200).send({ productos: productosRef.docs })
     } catch (error) {
         res.status(400).send({ msg: error })

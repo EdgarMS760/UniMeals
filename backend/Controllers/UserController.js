@@ -65,7 +65,7 @@ module.exports.logIn = async (req, res) => {
 
         if (userObtained.docs.length > 0) {
             if (userObtained.docs[0].data().contrasena === password) {
-                res.status(200).send({ msg: "Se Ingreso correctamente" })
+                res.status(200).send({ msg: "Se Ingreso correctamente", idUser: userObtained.docs[0].ref.path.replace("usuarios/", ""), userData: userObtained.docs[0].data() })
             } else {
                 res.status(400).send({ msg: "No se encontro al usuario" })
             }
@@ -124,7 +124,10 @@ module.exports.update = async (req, res) => {
             email: email,
             contrasena: password
         })
-        res.status(200).send({ msg: "Se registro correctamente" })
+
+        const userRefUpd = await db.collection('usuarios').where('email', '==', email).get()
+
+        res.status(200).send({ msg: "Se registro correctamente", data: userRefUpd.docs[0].data() })
     } catch (error) {
         res.status(400).send({ msg: error })
     }
